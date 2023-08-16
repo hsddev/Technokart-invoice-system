@@ -1,16 +1,16 @@
 // Dependencies
 const mongoose = require("mongoose");
 
-const invoiceSchema = new mongoose.Schema(
+const invoiceSchema = mongoose.Schema(
     {
         invoiceNumber: {
             type: Number,
             required: [true, "Invoice number is required"],
+            unique: true,
         },
         invoiceDate: {
             type: Date,
             required: [true, "Invoice date is required"],
-            default: Date.now(),
         },
         invoiceAmount: {
             type: Number,

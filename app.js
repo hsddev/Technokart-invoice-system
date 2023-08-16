@@ -1,6 +1,7 @@
 // Dependencies
 const express = require("express");
 const dotenv = require("dotenv");
+const routes = require("./routes/");
 
 const app = express();
 
@@ -9,7 +10,10 @@ const dbConnection = require("./config/db");
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => res.status(200).json({ msg: "Hello, world!" }));
+app.use(express.json());
+
+// Route
+app.use(routes);
 
 // Mongodb connection
 dbConnection();
