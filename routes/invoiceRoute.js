@@ -4,13 +4,19 @@ const {
     createInvoice,
     editInvoice,
     deleteInvoice,
-    getAllInvoices,
+    getInvoices,
 } = require("../controllers/invoiceController");
+const {
+    createInvoiceValidator,
+    deleteInvoiceValidator,
+    updateInvoiceValidator,
+    getInvoicesValidator,
+} = require("../utils/validators/invoiceValidators");
 
-router.post("/createInvoice", createInvoice);
-router.get("/", getAllInvoices);
-router.put("/editInvoice/:id", editInvoice);
-router.delete("/deleteInvoice/:id", deleteInvoice);
+router.post("/createInvoice", createInvoiceValidator, createInvoice);
+router.get("/", getInvoicesValidator, getInvoices);
+router.put("/editInvoice/:id", updateInvoiceValidator, editInvoice);
+router.delete("/deleteInvoice/:id", deleteInvoiceValidator, deleteInvoice);
 
 // Export module
 module.exports = router;
